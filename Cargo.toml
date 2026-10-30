@@ -1,0 +1,42 @@
+[package]
+name = "jarvis"
+version = "1.0.0"
+edition = "2021"
+description = "JARVIS - Native AI Assistant"
+publish = false
+
+[dependencies]
+eframe = "0.29"
+egui = "0.29"
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
+sysinfo = "0.30"
+notify-rust = "4"
+global-hotkey = "0.7"
+tray-icon = "0.15"
+rodio = "0.19"
+image = "0.24"
+dirs = "5"
+chrono = { version = "0.4", features = ["serde"] }
+parking_lot = "0.12"
+
+# Voice - optional, compile-time feature
+# whisper-rs = "0.7"
+# piper-tts = "0.2"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[workspace]
+resolver = "2"
